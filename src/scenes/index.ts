@@ -1,1 +1,1 @@
-export * from "./order-list.scene";
+export * from "./order-detail.scene";
