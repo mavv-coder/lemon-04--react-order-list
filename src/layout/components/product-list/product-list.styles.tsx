@@ -4,10 +4,9 @@ const classComponents = {
   Table: styled("table")`
     font-family: "Open Sans", sans-serif;
     margin: 0 auto;
-    margin-top: 50px;
+    margin-top: 60px;
     border-collapse: collapse;
-    min-width: max-content;
-    max-width: 700px;
+    width: 740px;
     -webkit-box-shadow: 3px 4px 8px 1px rgba(119, 119, 119, 0.67);
     box-shadow: 3px 4px 8px 1px rgba(119, 119, 119, 0.67);
   `,
