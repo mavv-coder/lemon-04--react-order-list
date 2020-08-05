@@ -7,7 +7,7 @@ const classComponents = {
     flex-direction: column;
     align-content: center;
     align-items: center;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Open Sans", sans-serif;
     min-width: max-content;
     max-width: 700px;
     height: 200px;
@@ -47,6 +47,7 @@ const classComponents = {
     background-color: #fdfefe;
     border-radius: 5px;
     outline: none;
+    transition: all 0.2s;
     &:focus {
       border: 2px solid #fddc5c;
     }
@@ -56,15 +57,18 @@ const classComponents = {
     margin-top: auto;
     display: inline-block;
     text-transform: uppercase;
-    color: #fff;
+    font-weight: 400;
+    color: #404040;
     border: none;
-    background-color: #ccc;
     border-radius: 5px;
     outline: none;
     cursor: pointer;
     padding: 12px 40px;
+    letter-spacing: 0.5px;
+    background-color: #fddc5c;
+    transition: all 0.3s;
     &:hover {
-      background-color: #fddc5c;
+      background-color: #ccc;
     }
   `,
 };
