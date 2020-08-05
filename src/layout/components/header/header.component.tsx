@@ -12,33 +12,35 @@ export const HeaderComponent: React.FC = () => {
   } = classComponents;
   return (
     <Container>
-      <FlexContainer>
-        <InputField>
-          <Label>Número</Label>
-          <Input type="text" id="number" />
-        </InputField>
-        <InputField>
-          <Label>Proveedor</Label>
-          <Input type="text" />
-        </InputField>
-        <InputField>
-          <Label>Fecha</Label>
-          <Input type="date" />
-        </InputField>
-      </FlexContainer>
-      <FlexContainer>
-        <InputField>
-          <Label>Importe total</Label>
-          <Input type="number" />
-        </InputField>
-        <InputField>
-          <Label>Estado</Label>
-          <Input type="text" />
-        </InputField>
-        <InputField>
-          <Button>Enviar</Button>
-        </InputField>
-      </FlexContainer>
+      <form>
+        <FlexContainer>
+          <InputField>
+            <Label>Número</Label>
+            <Input type="text" id="number" />
+          </InputField>
+          <InputField>
+            <Label>Proveedor</Label>
+            <Input type="text" />
+          </InputField>
+          <InputField>
+            <Label>Fecha</Label>
+            <Input type="date" />
+          </InputField>
+        </FlexContainer>
+        <FlexContainer>
+          <InputField>
+            <Label>Importe total</Label>
+            <Input type="number" />
+          </InputField>
+          <InputField>
+            <Label>Estado</Label>
+            <Input type="text" />
+          </InputField>
+          <InputField>
+            <Button type="submit">Enviar</Button>
+          </InputField>
+        </FlexContainer>
+      </form>
     </Container>
   );
 };
