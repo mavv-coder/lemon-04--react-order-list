@@ -66,8 +66,12 @@ const classComponents = {
     padding: 12px 40px;
     letter-spacing: 0.5px;
     background-color: #fddc5c;
-    transition: all 0.3s;
+    transition: all 0.2s;
     &:hover {
+      color: #fff;
+      background-color: #20c073;
+    }
+    &:active {
       background-color: #ccc;
     }
   `,
