@@ -1,23 +1,19 @@
 import React from "react";
-import { HashRouter as Router, Switch, Route } from "react-router-dom";
+import { Switch, Route, HashRouter as Router } from "react-router-dom";
 import { switchRoutes } from "./routes";
-import {
-  LoginScene,
-  MovieListScene,
-  AlbumListScene,
-  CheckoutScene,
-} from "../../scenes";
+import { OrderListScene } from "../../scenes";
 
 export const RouterComponent: React.FC = () => {
-  const { movieList, albumList, login, root, checkout } = switchRoutes;
+  const { root, orderList } = switchRoutes;
 
   return (
     <Router>
       <Switch>
-        <Route exact={true} path={[root, login]} component={LoginScene} />
-        <Route exact={true} path={movieList} component={MovieListScene} />
-        <Route exact={true} path={albumList} component={AlbumListScene} />
-        <Route exact={true} path={checkout} component={CheckoutScene} />
+        <Route
+          exact={true}
+          path={[root, orderList]}
+          component={OrderListScene}
+        />
       </Switch>
     </Router>
   );
