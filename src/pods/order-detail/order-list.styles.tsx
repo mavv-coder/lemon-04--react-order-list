@@ -2,9 +2,11 @@ import styled from "@emotion/styled";
 
 const classComponents = {
   Heading: styled("h1")`
-    color: #d3494e;
+    font-weight: 200;
+    text-align: center;
+    color: #1a1a1a;
     font-family: Arial, Helvetica, sans-serif;
-    margin-left: 20px;
+    margin-top: 30px;
   `,
 };
 

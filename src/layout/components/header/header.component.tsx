@@ -35,7 +35,9 @@ export const HeaderComponent: React.FC = () => {
           <Label>Estado</Label>
           <Input type="text" />
         </InputField>
-        <Button>Enviar</Button>
+        <InputField>
+          <Button>Enviar</Button>
+        </InputField>
       </FlexContainer>
     </Container>
   );
