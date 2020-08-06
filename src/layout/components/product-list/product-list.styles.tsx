@@ -35,6 +35,17 @@ const classComponents = {
       background-color: #eee;
     }
   `,
+  Input: styled("input")`
+    font-family: inherit;
+    text-align: right;
+    border: 1px solid #ccc;
+    background-color: #fdfefe;
+    outline: none;
+    transition: all 0.2s;
+    &:focus {
+      border: 1px solid #fddc5c;
+    }
+  `,
 };
 
 export default classComponents;

@@ -1,8 +1,16 @@
 import React from "react";
 import classComponents from "./product-list.styles";
+import { ProductVm } from "../../../pods/order-detail";
 
-export const ProductListComponent: React.FC = () => {
-  const { Table, TableData, TableHead, TableRow } = classComponents;
+interface Props {
+  productList: ProductVm[];
+  setProductList: (product: ProductVm[]) => void;
+}
+
+export const ProductListComponent: React.FC<Props> = (props) => {
+  const { productList } = props;
+  const { Table, TableData, TableHead, TableRow, Input } = classComponents;
+
   return (
     <Table>
       <thead>
@@ -14,30 +22,18 @@ export const ProductListComponent: React.FC = () => {
         </TableRow>
       </thead>
       <tbody>
-        <TableRow>
-          <TableData>
-            <input type="checkbox" />
-          </TableData>
-          <TableData>Alfreds Futterkiste</TableData>
-          <TableData>Maria Anders</TableData>
-          <TableData>Germany</TableData>
-        </TableRow>
-        <TableRow>
-          <TableData>
-            <input type="checkbox" />
-          </TableData>
-          <TableData>Centro comercial Moctezuma</TableData>
-          <TableData>Francisco Chang</TableData>
-          <TableData>Mexico</TableData>
-        </TableRow>
-        <TableRow>
-          <TableData>
-            <input type="checkbox" />
-          </TableData>
-          <TableData>Ernst Handel</TableData>
-          <TableData>Roland Mendel</TableData>
-          <TableData>Austria</TableData>
-        </TableRow>
+        {productList.map((product) => (
+          <TableRow key={product.id}>
+            <TableData>
+              <input type="checkbox" defaultChecked={product.state} />
+            </TableData>
+            <TableData>{product.state ? "Validado" : "Pendiente"}</TableData>
+            <TableData>{product.description}</TableData>
+            <TableData>
+              <Input type="number" value={product.cost} /> €
+            </TableData>
+          </TableRow>
+        ))}
       </tbody>
     </Table>
   );
