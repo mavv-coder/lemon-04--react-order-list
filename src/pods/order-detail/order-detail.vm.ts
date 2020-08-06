@@ -3,4 +3,5 @@ export interface ProductVm {
   description: string;
   cost: number;
   state: boolean;
+  checked: boolean;
 }

@@ -6,6 +6,7 @@ const mapProductFromApiToVm = (product: ProductEntityApi): ProductVm => ({
   description: product.title,
   cost: parseFloat(product.cost),
   state: false,
+  checked: false,
 });
 
 export const mapProductListFromApiToVm = (

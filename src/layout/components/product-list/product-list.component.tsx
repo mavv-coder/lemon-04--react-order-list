@@ -39,7 +39,7 @@ export const ProductListComponent: React.FC<Props> = (props) => {
           {productList.map((product) => (
             <TableRow key={product.id}>
               <TableData>
-                <input type="checkbox" defaultChecked={product.state} />
+                <input type="checkbox" defaultChecked={product.checked} />
               </TableData>
               <TableData>{product.state ? "Validado" : "Pendiente"}</TableData>
               <TableData>{product.description}</TableData>
