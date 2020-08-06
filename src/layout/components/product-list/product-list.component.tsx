@@ -30,7 +30,7 @@ export const ProductListComponent: React.FC<Props> = (props) => {
             <TableData>{product.state ? "Validado" : "Pendiente"}</TableData>
             <TableData>{product.description}</TableData>
             <TableData>
-              <Input type="number" value={product.cost} /> €
+              <Input type="number" value={product.cost.toFixed(2)} /> €
             </TableData>
           </TableRow>
         ))}

@@ -4,7 +4,7 @@ import { ProductEntityApi } from "../../api";
 const mapProductFromApiToVm = (product: ProductEntityApi): ProductVm => ({
   id: product.id,
   description: product.title,
-  cost: product.cost,
+  cost: parseFloat(product.cost),
   state: false,
 });
 

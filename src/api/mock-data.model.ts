@@ -1,5 +1,5 @@
 export interface ProductEntityApi {
   id: string;
   title: string;
-  cost: number;
+  cost: string;
 }
