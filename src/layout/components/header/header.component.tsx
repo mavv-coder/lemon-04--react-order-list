@@ -11,6 +11,7 @@ export const HeaderComponent: React.FC<Props> = (props) => {
     Container,
     FlexContainer,
     InputField,
+    InputReadOnly,
     Input,
     Label,
     Button,
@@ -35,11 +36,11 @@ export const HeaderComponent: React.FC<Props> = (props) => {
         <FlexContainer>
           <InputField>
             <Label>Importe total</Label>
-            <Input type="number" value={totalCost} readOnly />
+            <InputReadOnly type="number" value={totalCost} readOnly />
           </InputField>
           <InputField>
             <Label>Estado</Label>
-            <Input type="text" />
+            <InputReadOnly type="text" />
           </InputField>
           <InputField>
             <Button type="submit">Enviar</Button>

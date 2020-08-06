@@ -29,16 +29,19 @@ const classComponents = {
     &:hover {
       color: #fff;
       background-color: #20c073;
-      border: 2px solid #404040;
+      border: 2px solid #20c073;
     }
     &:active {
       background-color: #404040;
+      border: 2px solid #404040;
     }
     &:last-of-type:hover {
       background-color: #f54842;
+      border: 2px solid #f54842;
     }
     &:last-of-type:active {
       background-color: #404040;
+      border: 2px solid #404040;
     }
   `,
   Table: styled("table")`

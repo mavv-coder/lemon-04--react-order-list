@@ -52,6 +52,18 @@ const classComponents = {
       border: 2px solid #fddc5c;
     }
   `,
+  InputReadOnly: styled("input")`
+    font-family: inherit;
+    margin-top: 10px;
+    width: 86px;
+    padding: 10px 12px;
+    height: 16px;
+    border: 2px solid #ccc;
+    background-color: #fdfefe;
+    border-radius: 5px;
+    outline: none;
+    transition: all 0.2s;
+  `,
   Button: styled("button")`
     margin-left: auto;
     margin-top: auto;
