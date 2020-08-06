@@ -66,10 +66,12 @@ const classComponents = {
     padding: 12px 40px;
     letter-spacing: 0.5px;
     background-color: #fddc5c;
+    -webkit-box-shadow: 1px 2px 5px 1px rgba(119, 119, 119, 0.67);
+    box-shadow: 1px 2px 5px 1px rgba(119, 119, 119, 0.67);
     transition: all 0.2s;
     &:hover {
       color: #fff;
-      background-color: #20c073;
+      background-color: #404040;
     }
     &:active {
       background-color: #ccc;
