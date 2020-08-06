@@ -6,19 +6,22 @@ import { ProductVm } from "./order-detail.vm";
 
 interface Props {
   productList: ProductVm[];
+  totalCost: number;
   setProductList: (product: ProductVm[]) => void;
+  updateProductCost: (id: string, value: number) => void;
 }
 
 export const OrderDetailComponent: React.FC<Props> = (props) => {
-  const { productList, setProductList } = props;
+  const { productList, setProductList, updateProductCost, totalCost } = props;
   const { Heading } = classComponents;
   return (
     <>
       <Heading>Pedido a proveedor</Heading>
-      <HeaderComponent />
+      <HeaderComponent totalCost={totalCost} />
       <ProductListComponent
         productList={productList}
         setProductList={setProductList}
+        updateProductCost={updateProductCost}
       />
     </>
   );

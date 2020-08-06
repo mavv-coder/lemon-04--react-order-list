@@ -36,6 +36,7 @@ const classComponents = {
     }
   `,
   Input: styled("input")`
+    padding: 3px;
     font-family: inherit;
     border: 1px solid #ccc;
     background-color: #fdfefe;

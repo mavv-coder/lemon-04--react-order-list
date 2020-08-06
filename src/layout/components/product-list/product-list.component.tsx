@@ -5,10 +5,11 @@ import { ProductVm } from "../../../pods/order-detail";
 interface Props {
   productList: ProductVm[];
   setProductList: (product: ProductVm[]) => void;
+  updateProductCost: (id: string, value: number) => void;
 }
 
 export const ProductListComponent: React.FC<Props> = (props) => {
-  const { productList } = props;
+  const { productList, updateProductCost } = props;
   const { Table, TableData, TableHead, TableRow, Input } = classComponents;
 
   return (
@@ -30,7 +31,14 @@ export const ProductListComponent: React.FC<Props> = (props) => {
             <TableData>{product.state ? "Validado" : "Pendiente"}</TableData>
             <TableData>{product.description}</TableData>
             <TableData>
-              <Input type="number" value={product.cost.toFixed(2)} /> €
+              <Input
+                type="number"
+                defaultValue={product.cost}
+                onChange={(e) => {
+                  updateProductCost(product.id, parseFloat(e.target.value));
+                }}
+              />{" "}
+              €
             </TableData>
           </TableRow>
         ))}

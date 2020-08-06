@@ -6,21 +6,44 @@ import { ProductVm } from "./order-detail.vm";
 
 export const OrderDetailContainer: React.FC = () => {
   const [productList, setProductList] = React.useState<ProductVm[]>([]);
+  const [totalCost, setTotalCost] = React.useState<number>(0);
 
+  // Load the list from the api after passing through the mapper
   const onLoadProductList = (): void => {
     getProductListApi()
       .then((data) => mapProductListFromApiToVm(data))
       .then((data) => setProductList(data));
   };
 
+  // Calculate total cost of the product using all cost properties
+  const calculateTotalCost = (list: ProductVm[]): number =>
+    list.reduce((acc, product) => (acc += product.cost), 0);
+
+  // Set the totalCost State using the new list
+  const updateTotalCost = (list: ProductVm[]): void =>
+    setTotalCost(calculateTotalCost(list));
+
+  // Update the cost property of the product whose input value has been modified
+  // Also set the ProductList State with the new product
+  const updateProductCost = (id: string, value: number): void => {
+    if (isNaN(value)) value = 0;
+    const newList = productList.map((x) =>
+      x.id === id ? { ...x, cost: value } : x
+    );
+    updateTotalCost(newList);
+    setProductList(newList);
+  };
+
   React.useEffect(() => {
     onLoadProductList();
   }, []);
-  console.log(productList);
+
   return (
     <OrderDetailComponent
+      totalCost={totalCost}
       productList={productList}
       setProductList={setProductList}
+      updateProductCost={updateProductCost}
     />
   );
 };

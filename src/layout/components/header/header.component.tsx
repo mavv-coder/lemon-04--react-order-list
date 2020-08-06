@@ -1,7 +1,12 @@
 import React from "react";
 import classComponents from "./header.styles";
 
-export const HeaderComponent: React.FC = () => {
+interface Props {
+  totalCost: number;
+}
+
+export const HeaderComponent: React.FC<Props> = (props) => {
+  const { totalCost } = props;
   const {
     Container,
     FlexContainer,
@@ -30,7 +35,7 @@ export const HeaderComponent: React.FC = () => {
         <FlexContainer>
           <InputField>
             <Label>Importe total</Label>
-            <Input type="number" />
+            <Input type="number" value={totalCost} readOnly />
           </InputField>
           <InputField>
             <Label>Estado</Label>
