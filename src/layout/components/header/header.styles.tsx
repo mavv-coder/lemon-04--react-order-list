@@ -67,6 +67,20 @@ const classComponents = {
   `,
   InputSuccess: styled("input")`
     font-family: inherit;
+    margin-top: 10px;
+    padding: 10px 12px;
+    height: 16px;
+    border: 2px solid #20c073;
+    background-color: #fdfefe;
+    border-radius: 5px;
+    outline: none;
+    transition: all 0.2s;
+    &:focus {
+      border: 2px solid #fddc5c;
+    }
+  `,
+  InputStateSuccess: styled("input")`
+    font-family: inherit;
     text-align: center;
     color: #20c073;
     margin-top: 10px;
@@ -78,6 +92,25 @@ const classComponents = {
     border-radius: 5px;
     outline: none;
     transition: all 0.2s;
+    &:focus {
+      border: 2px solid #fddc5c;
+    }
+  `,
+  InputError: styled("input")`
+    font-family: inherit;
+    text-align: center;
+    margin-top: 10px;
+    width: 86px;
+    padding: 10px 12px;
+    height: 16px;
+    border: 2px solid #f54842;
+    background-color: #fdfefe;
+    border-radius: 5px;
+    outline: none;
+    transition: all 0.2s;
+    &:focus {
+      border: 2px solid #fddc5c;
+    }
   `,
   Button: styled("button")`
     margin-left: auto;

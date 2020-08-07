@@ -22,6 +22,9 @@ export const HeaderComponent: React.FC<Props> = (props) => {
   });
 
   const [stateSuccess, setStateSuccess] = React.useState<boolean>(false);
+  const [orderNumSuccess, setOrderNumSuccess] = React.useState<boolean>(false);
+  const [providerSuccess, setProviderSuccess] = React.useState<boolean>(false);
+  const [dateSuccess, setDateSuccess] = React.useState<boolean>(false);
 
   const {
     Container,
@@ -32,6 +35,7 @@ export const HeaderComponent: React.FC<Props> = (props) => {
     Label,
     Button,
     InputSuccess,
+    InputStateSuccess,
   } = classComponents;
 
   React.useEffect(() => {
@@ -60,33 +64,87 @@ export const HeaderComponent: React.FC<Props> = (props) => {
       : console.log("Datos incorrectos");
   };
 
+  const handleNumberInputStyle = (value: string, type: string): void => {
+    handleFormData(value, type);
+    value ? setOrderNumSuccess(true) : setOrderNumSuccess(false);
+  };
+
+  const handleProviderInputStyle = (value: string, type: string): void => {
+    handleFormData(value, type);
+    value ? setProviderSuccess(true) : setProviderSuccess(false);
+  };
+
+  const handleDateInputStyle = (value: string, type: string): void => {
+    handleFormData(value, type);
+    value ? setDateSuccess(true) : setDateSuccess(false);
+  };
+
   return (
     <Container>
       <form>
         <FlexContainer>
           <InputField>
             <Label>Número</Label>
-            <Input
-              type="text"
-              id="orderNum"
-              onBlur={(e) => handleFormData(e.target.value, e.target.id)}
-            />
+            {orderNumSuccess ? (
+              <InputSuccess
+                type="text"
+                id="orderNum"
+                defaultValue={formData.orderNum}
+                onBlur={(e) =>
+                  handleNumberInputStyle(e.target.value, e.target.id)
+                }
+              />
+            ) : (
+              <Input
+                type="text"
+                id="orderNum"
+                onBlur={(e) =>
+                  handleNumberInputStyle(e.target.value, e.target.id)
+                }
+              />
+            )}
           </InputField>
           <InputField>
             <Label>Proveedor</Label>
-            <Input
-              type="text"
-              id="provider"
-              onBlur={(e) => handleFormData(e.target.value, e.target.id)}
-            />
+            {providerSuccess ? (
+              <InputSuccess
+                type="text"
+                id="provider"
+                defaultValue={formData.provider}
+                onBlur={(e) =>
+                  handleProviderInputStyle(e.target.value, e.target.id)
+                }
+              />
+            ) : (
+              <Input
+                type="text"
+                id="provider"
+                onBlur={(e) =>
+                  handleProviderInputStyle(e.target.value, e.target.id)
+                }
+              />
+            )}
           </InputField>
           <InputField>
             <Label>Fecha</Label>
-            <Input
-              type="date"
-              id="date"
-              onBlur={(e) => handleFormData(e.target.value, e.target.id)}
-            />
+            {dateSuccess ? (
+              <InputSuccess
+                type="date"
+                id="date"
+                defaultValue={formData.date}
+                onBlur={(e) =>
+                  handleDateInputStyle(e.target.value, e.target.id)
+                }
+              />
+            ) : (
+              <Input
+                type="date"
+                id="date"
+                onBlur={(e) =>
+                  handleDateInputStyle(e.target.value, e.target.id)
+                }
+              />
+            )}
           </InputField>
         </FlexContainer>
         <FlexContainer>
@@ -97,7 +155,11 @@ export const HeaderComponent: React.FC<Props> = (props) => {
           <InputField>
             <Label>Estado</Label>
             {stateSuccess ? (
-              <InputSuccess type="text" value={`${orderState}%`} readOnly />
+              <InputStateSuccess
+                type="text"
+                value={`${orderState}%`}
+                readOnly
+              />
             ) : (
               <InputReadOnly type="text" value={`${orderState}%`} readOnly />
             )}
