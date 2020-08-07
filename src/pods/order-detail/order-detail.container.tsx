@@ -7,6 +7,7 @@ import { ProductVm } from "./order-detail.vm";
 export const OrderDetailContainer: React.FC = () => {
   const [productList, setProductList] = React.useState<ProductVm[]>([]);
   const [totalCost, setTotalCost] = React.useState<number>(0);
+  const [orderState, setOrderState] = React.useState<number>(0);
 
   // Load the list from the api after passing through the mapper
   const onLoadProductList = (): void => {
@@ -57,6 +58,19 @@ export const OrderDetailContainer: React.FC = () => {
         ));
     newList = cleanCheckedProperty(newList);
     setProductList(newList);
+    calculateOrderState(newList);
+  };
+
+  const calculateOrderStatePercentage = (value: number): number =>
+    value === 0 ? 0 : (value * 100) / productList.length;
+
+  const calculateOrderState = (list: ProductVm[]): void => {
+    const newOrderState = list.reduce((acc, x) => {
+      if (x.state) acc++;
+      return acc;
+    }, 0);
+    const percentage = calculateOrderStatePercentage(newOrderState);
+    setOrderState(percentage);
   };
 
   React.useEffect(() => {
@@ -71,6 +85,7 @@ export const OrderDetailContainer: React.FC = () => {
       handleProductCost={handleProductCost}
       toggleCheckboxValue={toggleCheckboxValue}
       handleProductState={handleProductState}
+      orderState={orderState}
     />
   );
 };

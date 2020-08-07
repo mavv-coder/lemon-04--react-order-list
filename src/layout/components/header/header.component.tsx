@@ -3,10 +3,11 @@ import classComponents from "./header.styles";
 
 interface Props {
   totalCost: number;
+  orderState: number;
 }
 
 export const HeaderComponent: React.FC<Props> = (props) => {
-  const { totalCost } = props;
+  const { totalCost, orderState } = props;
   const {
     Container,
     FlexContainer,
@@ -40,7 +41,7 @@ export const HeaderComponent: React.FC<Props> = (props) => {
           </InputField>
           <InputField>
             <Label>Estado</Label>
-            <InputReadOnly type="text" readOnly />
+            <InputReadOnly type="text" value={`${orderState}%`} readOnly />
           </InputField>
           <InputField>
             <Button type="submit">Enviar</Button>

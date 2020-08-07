@@ -54,6 +54,7 @@ const classComponents = {
   `,
   InputReadOnly: styled("input")`
     font-family: inherit;
+    text-align: center;
     margin-top: 10px;
     width: 86px;
     padding: 10px 12px;

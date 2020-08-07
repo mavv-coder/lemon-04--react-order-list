@@ -11,6 +11,7 @@ interface Props {
   handleProductCost: (id: string, value: number) => void;
   toggleCheckboxValue: (product: ProductVm) => void;
   handleProductState: any;
+  orderState: number;
 }
 
 export const OrderDetailComponent: React.FC<Props> = (props) => {
@@ -21,12 +22,13 @@ export const OrderDetailComponent: React.FC<Props> = (props) => {
     totalCost,
     toggleCheckboxValue,
     handleProductState,
+    orderState,
   } = props;
   const { Heading } = classComponents;
   return (
     <>
       <Heading>Pedido a proveedor</Heading>
-      <HeaderComponent totalCost={totalCost} />
+      <HeaderComponent totalCost={totalCost} orderState={orderState} />
       <ProductListComponent
         productList={productList}
         setProductList={setProductList}
