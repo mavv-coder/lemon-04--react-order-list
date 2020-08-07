@@ -7,10 +7,16 @@ interface Props {
   setProductList: (product: ProductVm[]) => void;
   handleProductCost: (id: string, value: number) => void;
   toggleCheckboxValue: (product: ProductVm) => void;
+  handleProductState: any;
 }
 
 export const ProductListComponent: React.FC<Props> = (props) => {
-  const { productList, handleProductCost, toggleCheckboxValue } = props;
+  const {
+    productList,
+    handleProductCost,
+    toggleCheckboxValue,
+    handleProductState,
+  } = props;
   const {
     Table,
     TableData,
@@ -24,8 +30,8 @@ export const ProductListComponent: React.FC<Props> = (props) => {
   return (
     <>
       <Container>
-        <Button>Validar</Button>
-        <Button>Invalidar</Button>
+        <Button onClick={() => handleProductState(true)}>Validar</Button>
+        <Button onClick={() => handleProductState(false)}>Invalidar</Button>
       </Container>
       <Table>
         <thead>
@@ -42,7 +48,7 @@ export const ProductListComponent: React.FC<Props> = (props) => {
               <TableData>
                 <input
                   type="checkbox"
-                  defaultChecked={false}
+                  checked={product.checked}
                   onChange={() => toggleCheckboxValue(product)}
                 />
               </TableData>

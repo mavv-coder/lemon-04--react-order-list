@@ -43,6 +43,22 @@ export const OrderDetailContainer: React.FC = () => {
     setProductList(newList);
   };
 
+  const cleanCheckedProperty = (list: ProductVm[]): ProductVm[] =>
+    list.map((x) => ({ ...x, checked: false }));
+
+  const handleProductState = (action: boolean): void => {
+    let newList = [];
+    action
+      ? (newList = productList.map((x) =>
+          x.checked ? { ...x, state: true } : x
+        ))
+      : (newList = productList.map((x) =>
+          x.checked ? { ...x, state: false } : x
+        ));
+    newList = cleanCheckedProperty(newList);
+    setProductList(newList);
+  };
+
   React.useEffect(() => {
     onLoadProductList();
   }, []);
@@ -54,6 +70,7 @@ export const OrderDetailContainer: React.FC = () => {
       setProductList={setProductList}
       handleProductCost={handleProductCost}
       toggleCheckboxValue={toggleCheckboxValue}
+      handleProductState={handleProductState}
     />
   );
 };
