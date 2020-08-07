@@ -28,7 +28,11 @@ export const OrderDetailComponent: React.FC<Props> = (props) => {
   return (
     <>
       <Heading>Pedido a proveedor</Heading>
-      <HeaderComponent totalCost={totalCost} orderState={orderState} />
+      <HeaderComponent
+        totalCost={totalCost}
+        orderState={orderState}
+        productList={productList}
+      />
       <ProductListComponent
         productList={productList}
         setProductList={setProductList}
