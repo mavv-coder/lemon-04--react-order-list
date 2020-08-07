@@ -1,8 +1,8 @@
 import React from "react";
-import classComponents from "./order-detail.styles";
+import { ProductVm } from "./order-detail.vm";
+import { HeadingContainer } from "../../layout/components/heading";
 import { HeaderComponent } from "../../layout/components/header";
 import { ProductListComponent } from "../../layout/components/product-list";
-import { ProductVm } from "./order-detail.vm";
 
 interface Props {
   productList: ProductVm[];
@@ -24,10 +24,9 @@ export const OrderDetailComponent: React.FC<Props> = (props) => {
     handleProductState,
     orderState,
   } = props;
-  const { Heading } = classComponents;
   return (
     <>
-      <Heading>Pedido a proveedor</Heading>
+      <HeadingContainer title="Pedido a proveedor" />
       <HeaderComponent
         totalCost={totalCost}
         orderState={orderState}
