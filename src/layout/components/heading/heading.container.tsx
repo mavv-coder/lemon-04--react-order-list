@@ -7,5 +7,6 @@ interface Props {
 
 export const HeadingContainer: React.FC<Props> = (props) => {
   const { title } = props;
+
   return <HeadingComponent title={title} />;
 };

@@ -2,13 +2,13 @@ import styled from "@emotion/styled";
 
 const classComponents = {
   Heading: styled("h1")`
-    font-weight: 300;
-    margin: 30px auto;
-    color: #1a1a1a;
     font-family: "Open Sans", sans-serif;
+    font-weight: 300;
     width: max-content;
-    border-bottom: 2px solid #fddc5c;
+    margin: 30px auto;
     padding-bottom: 7px;
+    color: #1a1a1a;
+    border-bottom: 2px solid #fddc5c;
   `,
 };
 
