@@ -1,10 +1,10 @@
 import React from "react";
 import { Switch, Route, HashRouter as Router } from "react-router-dom";
 import { switchRoutes } from "./routes";
-import { OrderDetailScene } from "../../scenes";
+import { OrderDetailScene, CheckoutScene } from "../../scenes";
 
 export const RouterComponent: React.FC = () => {
-  const { root, orderList } = switchRoutes;
+  const { root, orderList, checkout } = switchRoutes;
 
   return (
     <Router>
@@ -14,6 +14,7 @@ export const RouterComponent: React.FC = () => {
           path={[root, orderList]}
           component={OrderDetailScene}
         />
+        <Route exact={true} path={checkout} component={CheckoutScene} />
       </Switch>
     </Router>
   );
