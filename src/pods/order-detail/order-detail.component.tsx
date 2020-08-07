@@ -8,11 +8,18 @@ interface Props {
   productList: ProductVm[];
   totalCost: number;
   setProductList: (product: ProductVm[]) => void;
-  updateProductCost: (id: string, value: number) => void;
+  handleProductCost: (id: string, value: number) => void;
+  toggleCheckboxValue: (product: ProductVm) => void;
 }
 
 export const OrderDetailComponent: React.FC<Props> = (props) => {
-  const { productList, setProductList, updateProductCost, totalCost } = props;
+  const {
+    productList,
+    setProductList,
+    handleProductCost,
+    totalCost,
+    toggleCheckboxValue,
+  } = props;
   const { Heading } = classComponents;
   return (
     <>
@@ -21,7 +28,8 @@ export const OrderDetailComponent: React.FC<Props> = (props) => {
       <ProductListComponent
         productList={productList}
         setProductList={setProductList}
-        updateProductCost={updateProductCost}
+        handleProductCost={handleProductCost}
+        toggleCheckboxValue={toggleCheckboxValue}
       />
     </>
   );

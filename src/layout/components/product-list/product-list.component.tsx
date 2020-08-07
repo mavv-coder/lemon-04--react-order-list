@@ -5,11 +5,12 @@ import { ProductVm } from "../../../pods/order-detail";
 interface Props {
   productList: ProductVm[];
   setProductList: (product: ProductVm[]) => void;
-  updateProductCost: (id: string, value: number) => void;
+  handleProductCost: (id: string, value: number) => void;
+  toggleCheckboxValue: (product: ProductVm) => void;
 }
 
 export const ProductListComponent: React.FC<Props> = (props) => {
-  const { productList, updateProductCost } = props;
+  const { productList, handleProductCost, toggleCheckboxValue } = props;
   const {
     Table,
     TableData,
@@ -39,7 +40,11 @@ export const ProductListComponent: React.FC<Props> = (props) => {
           {productList.map((product) => (
             <TableRow key={product.id}>
               <TableData>
-                <input type="checkbox" defaultChecked={product.checked} />
+                <input
+                  type="checkbox"
+                  defaultChecked={false}
+                  onChange={() => toggleCheckboxValue(product)}
+                />
               </TableData>
               <TableData>{product.state ? "Validado" : "Pendiente"}</TableData>
               <TableData>{product.description}</TableData>
@@ -48,7 +53,7 @@ export const ProductListComponent: React.FC<Props> = (props) => {
                   type="number"
                   defaultValue={product.cost}
                   onChange={(e) => {
-                    updateProductCost(product.id, parseFloat(e.target.value));
+                    handleProductCost(product.id, parseFloat(e.target.value));
                   }}
                 />{" "}
                 €

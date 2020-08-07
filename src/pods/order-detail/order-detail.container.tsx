@@ -24,13 +24,22 @@ export const OrderDetailContainer: React.FC = () => {
     setTotalCost(calculateTotalCost(list));
 
   // Update the cost property of the product whose input value has been modified
-  // Also set the ProductList State with the new product
-  const updateProductCost = (id: string, value: number): void => {
+  // Then set the ProductList State with the new product
+  const handleProductCost = (id: string, value: number): void => {
     if (isNaN(value)) value = 0;
     const newList = productList.map((x) =>
       x.id === id ? { ...x, cost: value } : x
     );
     updateTotalCost(newList);
+    setProductList(newList);
+  };
+
+  // Look for the product in the list and toggle property checked
+  // Then set ProductList State
+  const toggleCheckboxValue = (product: ProductVm): void => {
+    const newList = productList.map((x) =>
+      x.id === product.id ? { ...x, checked: !x.checked } : x
+    );
     setProductList(newList);
   };
 
@@ -43,7 +52,8 @@ export const OrderDetailContainer: React.FC = () => {
       totalCost={totalCost}
       productList={productList}
       setProductList={setProductList}
-      updateProductCost={updateProductCost}
+      handleProductCost={handleProductCost}
+      toggleCheckboxValue={toggleCheckboxValue}
     />
   );
 };

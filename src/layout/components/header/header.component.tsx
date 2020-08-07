@@ -40,7 +40,7 @@ export const HeaderComponent: React.FC<Props> = (props) => {
           </InputField>
           <InputField>
             <Label>Estado</Label>
-            <InputReadOnly type="text" />
+            <InputReadOnly type="text" readOnly />
           </InputField>
           <InputField>
             <Button type="submit">Enviar</Button>
