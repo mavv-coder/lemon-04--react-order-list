@@ -7,7 +7,7 @@ interface Props {
   setProductList: (product: ProductVm[]) => void;
   handleProductCost: (id: string, value: number) => void;
   toggleCheckboxValue: (product: ProductVm) => void;
-  handleProductState: any;
+  handleProductState: (action: boolean) => void;
 }
 
 export const ProductListComponent: React.FC<Props> = (props) => {

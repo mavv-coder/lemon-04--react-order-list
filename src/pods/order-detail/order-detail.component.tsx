@@ -31,6 +31,7 @@ export const OrderDetailComponent: React.FC<Props> = (props) => {
         totalCost={totalCost}
         orderState={orderState}
         productList={productList}
+        handleProductState={handleProductState}
       />
       <ProductListComponent
         productList={productList}

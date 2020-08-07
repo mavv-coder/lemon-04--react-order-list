@@ -7,15 +7,18 @@ interface Props {
   totalCost: number;
   orderState: number;
   productList: ProductVm[];
+  handleProductState: (action: boolean) => void;
 }
 
 export const HeaderComponent: React.FC<Props> = (props) => {
-  const { totalCost, orderState, productList } = props;
+  const { totalCost, orderState, productList, handleProductState } = props;
   const [formData, setFormData] = React.useState<FormData>({
     orderNum: "",
     provider: "",
     date: "",
   });
+
+  const [stateSuccess, setStateSuccess] = React.useState<boolean>(false);
 
   const {
     Container,
@@ -25,7 +28,12 @@ export const HeaderComponent: React.FC<Props> = (props) => {
     Input,
     Label,
     Button,
+    InputSuccess,
   } = classComponents;
+
+  React.useEffect(() => {
+    setStateSuccess(isReadyOrderStateToSubmit());
+  }, [handleProductState]);
 
   const handleFormData = (value: string, type: string): void => {
     const newFormData = { ...formData, [type]: value };
@@ -81,7 +89,11 @@ export const HeaderComponent: React.FC<Props> = (props) => {
           </InputField>
           <InputField>
             <Label>Estado</Label>
-            <InputReadOnly type="text" value={`${orderState}%`} readOnly />
+            {stateSuccess ? (
+              <InputSuccess type="text" value={`${orderState}%`} readOnly />
+            ) : (
+              <InputReadOnly type="text" value={`${orderState}%`} readOnly />
+            )}
           </InputField>
           <InputField>
             <Button type="submit" onClick={(e) => handleSubmit(e)}>

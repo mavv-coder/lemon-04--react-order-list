@@ -65,6 +65,20 @@ const classComponents = {
     outline: none;
     transition: all 0.2s;
   `,
+  InputSuccess: styled("input")`
+    font-family: inherit;
+    text-align: center;
+    color: #20c073;
+    margin-top: 10px;
+    width: 86px;
+    padding: 10px 12px;
+    height: 16px;
+    border: 2px solid #20c073;
+    background-color: #fdfefe;
+    border-radius: 5px;
+    outline: none;
+    transition: all 0.2s;
+  `,
   Button: styled("button")`
     margin-left: auto;
     margin-top: auto;
