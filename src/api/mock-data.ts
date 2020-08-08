@@ -4,22 +4,22 @@ const productListApi: ProductEntityApi[] = [
   {
     id: "P463",
     title: "Recambios impresión",
-    cost: "2",
+    cost: "243.60",
   },
   {
     id: "P390",
     title: "Reactivos maquinaria",
-    cost: "2",
+    cost: "1200",
   },
   {
     id: "P422",
     title: "Soportes plataforma",
-    cost: "2",
+    cost: "150",
   },
   {
     id: "P321",
     title: "Material de oficina",
-    cost: "2",
+    cost: "67.80",
   },
 ];
 

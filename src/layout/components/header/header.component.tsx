@@ -161,7 +161,11 @@ export const HeaderComponent: React.FC<Props> = (props) => {
         <FlexContainer>
           <InputField>
             <Label>Importe total</Label>
-            <InputReadOnly type="number" value={totalCost} readOnly />
+            <InputReadOnly
+              type="text"
+              value={`${totalCost.toFixed(2)} €`}
+              readOnly
+            />
           </InputField>
           <InputField>
             <Label>Estado</Label>

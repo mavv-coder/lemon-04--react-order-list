@@ -8,16 +8,28 @@ const AppContext = React.createContext<Context>(null);
 
 export const AppContextProvider: React.FC = (props) => {
   const [productList, setProductList] = React.useState<ProductVm[]>([]);
+  const [totalCost, setTotalCost] = React.useState<number>(0);
   const [formData, setFormData] = React.useState<FormData>({
     orderNum: "",
     provider: "",
     date: "",
   });
 
+  // Calculate total cost of the product using all cost properties
+  const calculateTotalCost = (list: ProductVm[]): number =>
+    list.reduce((acc, product) => (acc += product.cost), 0);
+
+  // Set the totalCost State using the new list
+  const updateTotalCost = (list: ProductVm[]): void =>
+    setTotalCost(calculateTotalCost(list));
+
   const onLoadProductList = (): void => {
     getProductListApi()
       .then((data) => mapProductListFromApiToVm(data))
-      .then((data) => setProductList(data));
+      .then((data) => {
+        setProductList(data);
+        updateTotalCost(data);
+      });
   };
 
   React.useEffect(() => {
@@ -26,7 +38,14 @@ export const AppContextProvider: React.FC = (props) => {
 
   return (
     <AppContext.Provider
-      value={{ productList, setProductList, formData, setFormData }}
+      value={{
+        productList,
+        setProductList,
+        formData,
+        setFormData,
+        totalCost,
+        updateTotalCost,
+      }}
     >
       {props.children}
     </AppContext.Provider>

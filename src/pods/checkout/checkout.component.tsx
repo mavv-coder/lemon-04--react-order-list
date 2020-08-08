@@ -26,11 +26,12 @@ export const CheckOutComponent: React.FC<Props> = (props) => {
     <>
       <HeadingContainer title="Confirmar pedido" />
       <Container>
+        Detalles Pedido, Lista de productos, Coste total
         <List>
           {productList.map((product) => (
             <ListItem key={product.id}>
               <ItemDesc>{product.description}</ItemDesc>
-              <ItemCost>{product.cost}</ItemCost>
+              <ItemCost>{product.cost.toFixed(2)}</ItemCost>
             </ListItem>
           ))}
         </List>

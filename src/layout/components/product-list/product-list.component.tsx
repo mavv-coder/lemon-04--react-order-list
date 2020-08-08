@@ -62,7 +62,7 @@ export const ProductListComponent: React.FC<Props> = (props) => {
               <TableData>
                 <Input
                   type="number"
-                  defaultValue={product.cost}
+                  defaultValue={product.cost.toFixed(2)}
                   onChange={(e) => {
                     handleProductCost(product.id, parseFloat(e.target.value));
                   }}
