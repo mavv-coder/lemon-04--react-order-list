@@ -27,6 +27,10 @@ export const ProductListComponent: React.FC<Props> = (props) => {
     Button,
   } = classComponents;
 
+  React.useEffect(() => {
+    handleProductState();
+  }, []);
+
   return (
     <>
       <Container>

@@ -3,18 +3,20 @@ import { OrderDetailComponent } from "./order-detail.component";
 import { getProductListApi } from "../../api";
 import { mapProductListFromApiToVm } from "./order-detail.mapper";
 import { ProductVm } from "./order-detail.vm";
+import { useAppContext } from "../../core/context";
 
 export const OrderDetailContainer: React.FC = () => {
-  const [productList, setProductList] = React.useState<ProductVm[]>([]);
+  // const [productList, setProductList] = React.useState<ProductVm[]>([]);
+  const { productList, setProductList } = useAppContext();
   const [totalCost, setTotalCost] = React.useState<number>(0);
   const [orderState, setOrderState] = React.useState<number>(0);
 
   // Load the list from the api after passing through the mapper
-  const onLoadProductList = (): void => {
-    getProductListApi()
-      .then((data) => mapProductListFromApiToVm(data))
-      .then((data) => setProductList(data));
-  };
+  // const onLoadProductList = (): void => {
+  //   getProductListApi()
+  //     .then((data) => mapProductListFromApiToVm(data))
+  //     .then((data) => setProductList(data));
+  // };
 
   // Calculate total cost of the product using all cost properties
   const calculateTotalCost = (list: ProductVm[]): number =>
@@ -47,7 +49,7 @@ export const OrderDetailContainer: React.FC = () => {
   const cleanCheckedProperty = (list: ProductVm[]): ProductVm[] =>
     list.map((x) => ({ ...x, checked: false }));
 
-  const handleProductState = (action: boolean): void => {
+  const handleProductState = (action?: boolean): void => {
     let newList = [];
     action
       ? (newList = productList.map((x) =>
@@ -73,9 +75,9 @@ export const OrderDetailContainer: React.FC = () => {
     setOrderState(percentage);
   };
 
-  React.useEffect(() => {
-    onLoadProductList();
-  }, []);
+  // React.useEffect(() => {
+  //     onLoadProductList();
+  // }, []);
 
   return (
     <OrderDetailComponent
