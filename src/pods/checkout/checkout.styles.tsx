@@ -20,6 +20,13 @@ const classComponents = {
   List: styled("ul")`
     list-style: none;
   `,
+  ListItem: styled("li")``,
+  ItemDesc: styled("span")`
+    color: green;
+  `,
+  ItemCost: styled("span")`
+    color: red;
+  `,
   HiddenContainer: styled("div")`
     margin: 0 auto;
     display: flex;
