@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 const classComponents = {
-  Container: styled("div")`
+  MainContainer: styled("div")`
     margin: 0 auto;
     font-family: "Open Sans", sans-serif;
     min-width: max-content;
@@ -15,39 +15,41 @@ const classComponents = {
   `,
   FlexContainer: styled("div")`
     display: flex;
-    align-content: center;
-    align-items: center;
     width: 100%;
+  `,
+  H2: styled("h2")`
+    margin: 0 0 20px 0;
+    font-weight: 300;
   `,
   FlexInfoContainer: styled("div")`
     flex: 1;
-    display: flex;
+    padding: 10px;
     flex-direction: column;
-    justify-content: flex-start;
+    &:first-of-type {
+      margin-right: 20px;
+    }
   `,
   TextInfo: styled("p")`
+    color: #404040;
     margin: 0;
     padding: 0;
+  `,
+  List: styled("ul")`
+    margin: 0;
+    padding: 0;
+    min-width: max-content;
+  `,
+  ListItem: styled("li")`
+    color: #404040;
+  `,
+  Divider: styled("hr")`
+    border-top: 1px solid #ccc;
   `,
   TextTotal: styled("p")`
     font-size: 18px;
     margin-bottom: 0px;
     color: #f54842;
     text-align: right;
-  `,
-  List: styled("ul")`
-    margin: 0;
-    padding: 0;
-  `,
-  ListItem: styled("li")``,
-  ItemDesc: styled("span")`
-    color: green;
-  `,
-  ItemCost: styled("span")`
-    color: red;
-  `,
-  Divider: styled("hr")`
-    border-top: 2px solid #ccc;
   `,
   HiddenContainer: styled("div")`
     margin: 0 auto;

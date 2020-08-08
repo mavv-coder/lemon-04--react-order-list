@@ -14,41 +14,39 @@ interface Props {
 export const CheckOutComponent: React.FC<Props> = (props) => {
   const { productList, formData, totalCost } = props;
   const {
-    Container,
+    MainContainer,
     FlexContainer,
     FlexInfoContainer,
     List,
     ListItem,
-    ItemDesc,
-    ItemCost,
     HiddenContainer,
     ButtonConfirm,
     ButtonBack,
     TextInfo,
     TextTotal,
     Divider,
+    H2,
   } = classComponents;
 
   return (
     <>
       <HeadingContainer title="Confirmar pedido" />
-      <Container>
+      <MainContainer>
         <FlexContainer>
           <FlexInfoContainer>
-            <h2>Detalles Pedido</h2>
-            <FlexInfoContainer>
+            <H2>Detalles del pedido</H2>
+            <div>
               <TextInfo>Número de pedido: {formData.orderNum}</TextInfo>
               <TextInfo>Proveedor: {formData.provider}</TextInfo>
               <TextInfo>Fecha del pedido: {formData.date}</TextInfo>
-            </FlexInfoContainer>
+            </div>
           </FlexInfoContainer>
           <FlexInfoContainer>
-            <h2>Lista de productos</h2>
+            <H2>Lista de productos</H2>
             <List>
               {productList.map((product) => (
                 <ListItem key={product.id}>
-                  <ItemDesc>{product.description}: </ItemDesc>
-                  <ItemCost>{product.cost.toFixed(2)}€</ItemCost>
+                  {`${product.description}: ${product.cost.toFixed(2)}€`}
                 </ListItem>
               ))}
             </List>
@@ -56,7 +54,7 @@ export const CheckOutComponent: React.FC<Props> = (props) => {
         </FlexContainer>
         <Divider></Divider>
         <TextTotal>Coste total: {totalCost.toFixed(2)}€</TextTotal>
-      </Container>
+      </MainContainer>
       <HiddenContainer>
         <Link to={switchRoutes.orderList}>
           <ButtonBack>Volver atrás</ButtonBack>
