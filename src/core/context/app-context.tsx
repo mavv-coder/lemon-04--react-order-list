@@ -2,12 +2,17 @@ import React from "react";
 import { getProductListApi } from "../../api";
 import { mapProductListFromApiToVm } from "../../pods/order-detail/order-detail.mapper";
 
-import { Context, ProductVm } from "./app-context.model";
+import { Context, ProductVm, FormData } from "./app-context.model";
 
 const AppContext = React.createContext<Context>(null);
 
 export const AppContextProvider: React.FC = (props) => {
   const [productList, setProductList] = React.useState<ProductVm[]>([]);
+  const [formData, setFormData] = React.useState<FormData>({
+    orderNum: "",
+    provider: "",
+    date: "",
+  });
 
   const onLoadProductList = (): void => {
     getProductListApi()
@@ -20,7 +25,9 @@ export const AppContextProvider: React.FC = (props) => {
   }, []);
 
   return (
-    <AppContext.Provider value={{ productList, setProductList }}>
+    <AppContext.Provider
+      value={{ productList, setProductList, formData, setFormData }}
+    >
       {props.children}
     </AppContext.Provider>
   );

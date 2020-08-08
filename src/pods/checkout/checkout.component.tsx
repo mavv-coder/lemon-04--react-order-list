@@ -28,7 +28,7 @@ export const CheckOutComponent: React.FC<Props> = (props) => {
       <Container>
         <List>
           {productList.map((product) => (
-            <ListItem>
+            <ListItem key={product.id}>
               <ItemDesc>{product.description}</ItemDesc>
               <ItemCost>{product.cost}</ItemCost>
             </ListItem>

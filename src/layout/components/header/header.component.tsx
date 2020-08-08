@@ -2,8 +2,8 @@ import React, { MouseEvent } from "react";
 import { useHistory } from "react-router-dom";
 import { switchRoutes } from "../../../core/router";
 import classComponents from "./header.styles";
-import { FormData } from "./header.vm";
 import { ProductVm } from "../../../pods/order-detail";
+import { useAppContext } from "../../../core/context";
 
 interface Props {
   totalCost: number;
@@ -13,13 +13,15 @@ interface Props {
 }
 
 export const HeaderComponent: React.FC<Props> = (props) => {
+  const { formData, setFormData } = useAppContext();
   const history = useHistory();
   const { totalCost, orderState, productList, handleProductState } = props;
-  const [formData, setFormData] = React.useState<FormData>({
-    orderNum: "",
-    provider: "",
-    date: "",
-  });
+
+  // const [formData, setFormData] = React.useState<FormData>({
+  //   orderNum: "",
+  //   provider: "",
+  //   date: "",
+  // });
 
   const [stateSuccess, setStateSuccess] = React.useState<boolean>(false);
   const [orderNumSuccess, setOrderNumSuccess] = React.useState<boolean>(false);
@@ -40,6 +42,7 @@ export const HeaderComponent: React.FC<Props> = (props) => {
 
   React.useEffect(() => {
     setStateSuccess(isReadyOrderStateToSubmit());
+    refreshAllInputStyleOnLoad();
   }, [handleProductState]);
 
   const handleFormData = (value: string, type: string): void => {
@@ -64,6 +67,12 @@ export const HeaderComponent: React.FC<Props> = (props) => {
       : console.log("Datos incorrectos");
   };
 
+  const refreshAllInputStyleOnLoad = () => {
+    formData.orderNum ? setOrderNumSuccess(true) : setOrderNumSuccess(false);
+    formData.provider ? setProviderSuccess(true) : setProviderSuccess(false);
+    formData.date ? setDateSuccess(true) : setDateSuccess(false);
+  };
+
   const handleNumberInputStyle = (value: string, type: string): void => {
     handleFormData(value, type);
     value ? setOrderNumSuccess(true) : setOrderNumSuccess(false);
@@ -78,6 +87,8 @@ export const HeaderComponent: React.FC<Props> = (props) => {
     handleFormData(value, type);
     value ? setDateSuccess(true) : setDateSuccess(false);
   };
+
+  console.log(formData);
 
   return (
     <Container>

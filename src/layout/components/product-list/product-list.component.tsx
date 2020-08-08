@@ -28,7 +28,8 @@ export const ProductListComponent: React.FC<Props> = (props) => {
   } = classComponents;
 
   React.useEffect(() => {
-    handleProductState();
+    // Pinta el estado al cargar el componente
+    handleProductState(true);
   }, []);
 
   return (

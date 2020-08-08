@@ -49,7 +49,7 @@ export const OrderDetailContainer: React.FC = () => {
   const cleanCheckedProperty = (list: ProductVm[]): ProductVm[] =>
     list.map((x) => ({ ...x, checked: false }));
 
-  const handleProductState = (action?: boolean): void => {
+  const handleProductState = (action: boolean): void => {
     let newList = [];
     action
       ? (newList = productList.map((x) =>
