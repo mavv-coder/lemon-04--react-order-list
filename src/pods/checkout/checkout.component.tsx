@@ -60,7 +60,13 @@ export const CheckOutComponent: React.FC<Props> = (props) => {
         <Link to={switchRoutes.orderList}>
           <ButtonBack>Volver atrás</ButtonBack>
         </Link>
-        <ButtonConfirm>Confirmar</ButtonConfirm>
+        <ButtonConfirm
+          onClick={() => {
+            alert("Tu pedido se ha realizado con éxito");
+          }}
+        >
+          Confirmar
+        </ButtonConfirm>
       </HiddenContainer>
     </>
   );
