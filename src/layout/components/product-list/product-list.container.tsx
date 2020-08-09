@@ -13,7 +13,7 @@ export const ProductListContainer: React.FC<Props> = (props) => {
   const { handleProductCost, toggleCheckboxValue, handleProductState } = props;
 
   React.useEffect(() => {
-    // Pinta el estado al cargar el componente
+    // Paints the current State at beginning
     handleProductState(true);
   }, []);
 

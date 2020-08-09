@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import { useAppContext } from "../../../core/context";
 import { switchRoutes } from "../../../core/router";
-import { useAppContext, ProductVm } from "../../../core/context";
 import { HeaderComponent } from "./header.component";
 
 interface Props {
@@ -32,34 +32,40 @@ export const HeaderContainer: React.FC<Props> = (props) => {
   };
 
   // Checks if everything is ready to submit and go to Checkout page
-  const handleSubmit = (e: any): void => {
+  const handleSubmit = (e: React.MouseEvent<HTMLElement>): void => {
     e.preventDefault();
     isReadyOrderStateToSubmit() && isReadyFormDataToSubmit()
       ? navigateToCheckout()
       : alert("Completa el formulario y valida los productos");
   };
 
+  // Updates form properties with values from inputs
+  // Then set FormData with new values
   const handleFormData = (value: string, type: string): void => {
     const newFormData = { ...formData, [type]: value };
     setFormData(newFormData);
   };
 
-  const refreshAllInputStyleOnLoad = () => {
+  // Checks the input styles when navigate from other pages
+  const refreshAllInputStyleOnLoad = (): void => {
     formData.orderNum ? setOrderNumSuccess(true) : setOrderNumSuccess(false);
     formData.provider ? setProviderSuccess(true) : setProviderSuccess(false);
     formData.date ? setDateSuccess(true) : setDateSuccess(false);
   };
 
+  // Update Input OrderNum style to success if the value is correct
   const handleNumberInputStyle = (value: string, type: string): void => {
     handleFormData(value, type);
     value ? setOrderNumSuccess(true) : setOrderNumSuccess(false);
   };
 
+  // Update Input Provider style to success if the value is correct
   const handleProviderInputStyle = (value: string, type: string): void => {
     handleFormData(value, type);
     value ? setProviderSuccess(true) : setProviderSuccess(false);
   };
 
+  // Update Input Date style to success if the value is correct
   const handleDateInputStyle = (value: string, type: string): void => {
     handleFormData(value, type);
     value ? setDateSuccess(true) : setDateSuccess(false);

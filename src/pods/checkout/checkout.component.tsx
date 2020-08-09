@@ -1,9 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { ProductVm, FormData } from "../../core/context";
+import { switchRoutes } from "../../core/router";
 import { HeadingContainer } from "../../layout/components/heading";
 import classComponents from "./checkout.styles";
-import { Link } from "react-router-dom";
-import { switchRoutes } from "../../core/router";
-import { ProductVm, FormData } from "../../core/context";
 
 interface Props {
   productList: ProductVm[];
@@ -13,19 +13,20 @@ interface Props {
 
 export const CheckOutComponent: React.FC<Props> = (props) => {
   const { productList, formData, totalCost } = props;
+
   const {
     MainContainer,
     FlexContainer,
     FlexInfoContainer,
+    H2,
+    TextInfo,
     List,
     ListItem,
-    HiddenContainer,
-    ButtonConfirm,
-    ButtonBack,
-    TextInfo,
-    TextTotal,
     Divider,
-    H2,
+    TextTotal,
+    HiddenContainer,
+    ButtonBack,
+    ButtonConfirm,
   } = classComponents;
 
   return (

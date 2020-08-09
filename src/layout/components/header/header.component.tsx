@@ -10,7 +10,7 @@ interface Props {
   orderNumSuccess: boolean;
   providerSuccess: boolean;
   dateSuccess: boolean;
-  handleSubmit: (e: any) => void;
+  handleSubmit: (e: React.MouseEvent<HTMLElement>) => void;
   handleNumberInputStyle: (value: string, type: string) => void;
   handleProviderInputStyle: (value: string, type: string) => void;
   handleDateInputStyle: (value: string, type: string) => void;
