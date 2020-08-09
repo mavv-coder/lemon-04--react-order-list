@@ -1,8 +1,6 @@
 import React from "react";
 import { OrderDetailComponent } from "./order-detail.component";
-import { getProductListApi } from "../../api";
-import { mapProductListFromApiToVm } from "./order-detail.mapper";
-import { ProductVm } from "./order-detail.vm";
+import { ProductVm } from "../../core/context";
 import { useAppContext } from "../../core/context";
 
 export const OrderDetailContainer: React.FC = () => {

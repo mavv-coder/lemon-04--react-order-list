@@ -2,7 +2,7 @@ import React, { MouseEvent } from "react";
 import { useHistory } from "react-router-dom";
 import { switchRoutes } from "../../../core/router";
 import classComponents from "./header.styles";
-import { ProductVm } from "../../../pods/order-detail";
+import { ProductVm } from "../../../core/context";
 import { useAppContext } from "../../../core/context";
 
 interface Props {

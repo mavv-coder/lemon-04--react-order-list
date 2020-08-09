@@ -1,6 +1,6 @@
 import React from "react";
 import { getProductListApi } from "../../api";
-import { mapProductListFromApiToVm } from "../../pods/order-detail/order-detail.mapper";
+import { mapProductListFromApiToVm } from "./app-context.mapper";
 
 import { Context, ProductVm, FormData } from "./app-context.model";
 

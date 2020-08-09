@@ -1,5 +1,5 @@
 import React from "react";
-import { ProductVm } from "./order-detail.vm";
+import { ProductVm } from "../../core/context";
 import { HeadingContainer } from "../../layout/components/heading";
 import { HeaderComponent } from "../../layout/components/header";
 import { ProductListComponent } from "../../layout/components/product-list";

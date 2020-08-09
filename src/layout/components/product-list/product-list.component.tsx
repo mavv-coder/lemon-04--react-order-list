@@ -1,6 +1,6 @@
 import React from "react";
 import classComponents from "./product-list.styles";
-import { ProductVm } from "../../../pods/order-detail";
+import { ProductVm } from "../../../core/context";
 
 interface Props {
   productList: ProductVm[];
