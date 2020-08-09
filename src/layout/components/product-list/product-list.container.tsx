@@ -3,7 +3,6 @@ import { ProductVm, useAppContext } from "../../../core/context";
 import { ProductListComponent } from "./product-list.component";
 
 interface Props {
-  setProductList: (product: ProductVm[]) => void;
   handleProductCost: (id: string, value: number) => void;
   toggleCheckboxValue: (product: ProductVm) => void;
   handleProductState: (action: boolean) => void;
