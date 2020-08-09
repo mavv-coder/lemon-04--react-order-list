@@ -1,40 +1,36 @@
-import React, { MouseEvent } from "react";
+import React from "react";
 import classComponents from "./header.styles";
-import { ProductVm } from "../../../core/context";
-
-import { useAppContext } from "../../../core/context";
+import { ProductVm, FormData } from "../../../core/context";
 
 interface Props {
+  formData: FormData;
   totalCost: number;
   orderState: number;
   productList: ProductVm[];
-  handleProductState: (action: boolean) => void;
   handleSubmit: (e: any) => void;
-  isReadyOrderStateToSubmit: () => boolean;
+  stateSuccess: boolean;
+  orderNumSuccess: boolean;
+  providerSuccess: boolean;
+  dateSuccess: boolean;
+  handleNumberInputStyle: (value: string, type: string) => void;
+  handleProviderInputStyle: (value: string, type: string) => void;
+  handleDateInputStyle: (value: string, type: string) => void;
 }
 
 export const HeaderComponent: React.FC<Props> = (props) => {
-  const { formData, setFormData } = useAppContext();
-  // const history = useHistory();
   const {
     totalCost,
+    formData,
     orderState,
-    productList,
-    handleProductState,
     handleSubmit,
-    isReadyOrderStateToSubmit,
+    stateSuccess,
+    orderNumSuccess,
+    providerSuccess,
+    dateSuccess,
+    handleNumberInputStyle,
+    handleProviderInputStyle,
+    handleDateInputStyle,
   } = props;
-
-  // const [formData, setFormData] = React.useState<FormData>({
-  //   orderNum: "",
-  //   provider: "",
-  //   date: "",
-  // });
-
-  const [stateSuccess, setStateSuccess] = React.useState<boolean>(false);
-  const [orderNumSuccess, setOrderNumSuccess] = React.useState<boolean>(false);
-  const [providerSuccess, setProviderSuccess] = React.useState<boolean>(false);
-  const [dateSuccess, setDateSuccess] = React.useState<boolean>(false);
 
   const {
     Container,
@@ -47,57 +43,6 @@ export const HeaderComponent: React.FC<Props> = (props) => {
     InputSuccess,
     InputStateSuccess,
   } = classComponents;
-
-  React.useEffect(() => {
-    setStateSuccess(isReadyOrderStateToSubmit());
-    refreshAllInputStyleOnLoad();
-  }, [handleProductState]);
-
-  const handleFormData = (value: string, type: string): void => {
-    const newFormData = { ...formData, [type]: value };
-    setFormData(newFormData);
-  };
-
-  //
-  // const isReadyFormDataToSubmit = (): boolean =>
-  //   formData.orderNum && formData.provider && formData.date ? true : false;
-
-  // const isReadyOrderStateToSubmit = (): boolean =>
-  //   productList.every((x) => x.state);
-
-  // const navigateToCheckout = (): void => {
-  //   history.push(switchRoutes.checkout);
-  // };
-
-  // const handleSubmit = (e: MouseEvent): void => {
-  //   e.preventDefault();
-  //   isReadyOrderStateToSubmit() && isReadyFormDataToSubmit()
-  //     ? navigateToCheckout()
-  //     : alert("Completa el formulario y valida los productos");
-  // };
-
-  const refreshAllInputStyleOnLoad = () => {
-    formData.orderNum ? setOrderNumSuccess(true) : setOrderNumSuccess(false);
-    formData.provider ? setProviderSuccess(true) : setProviderSuccess(false);
-    formData.date ? setDateSuccess(true) : setDateSuccess(false);
-  };
-
-  const handleNumberInputStyle = (value: string, type: string): void => {
-    handleFormData(value, type);
-    value ? setOrderNumSuccess(true) : setOrderNumSuccess(false);
-  };
-
-  const handleProviderInputStyle = (value: string, type: string): void => {
-    handleFormData(value, type);
-    value ? setProviderSuccess(true) : setProviderSuccess(false);
-  };
-
-  const handleDateInputStyle = (value: string, type: string): void => {
-    handleFormData(value, type);
-    value ? setDateSuccess(true) : setDateSuccess(false);
-  };
-
-  console.log(formData);
 
   return (
     <Container>
