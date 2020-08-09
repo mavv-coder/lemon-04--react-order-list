@@ -4,30 +4,8 @@ import { ProductVm } from "../../core/context";
 import { useAppContext } from "../../core/context";
 
 export const OrderDetailContainer: React.FC = () => {
-  // const [productList, setProductList] = React.useState<ProductVm[]>([]);
-  const {
-    productList,
-    setProductList,
-    updateTotalCost,
-    totalCost,
-  } = useAppContext();
-  // const [totalCost, setTotalCost] = React.useState<number>(0);
+  const { productList, setProductList, updateTotalCost } = useAppContext();
   const [orderState, setOrderState] = React.useState<number>(0);
-
-  // Load the list from the api after passing through the mapper
-  // const onLoadProductList = (): void => {
-  //   getProductListApi()
-  //     .then((data) => mapProductListFromApiToVm(data))
-  //     .then((data) => setProductList(data));
-  // };
-
-  // // Calculate total cost of the product using all cost properties
-  // const calculateTotalCost = (list: ProductVm[]): number =>
-  //   list.reduce((acc, product) => (acc += product.cost), 0);
-
-  // // Set the totalCost State using the new list
-  // const updateTotalCost = (list: ProductVm[]): void =>
-  //   setTotalCost(calculateTotalCost(list));
 
   // Update the cost property of the product whose input value has been modified
   // Then set the ProductList State with the new product
@@ -78,13 +56,8 @@ export const OrderDetailContainer: React.FC = () => {
     setOrderState(percentage);
   };
 
-  // React.useEffect(() => {
-  //     onLoadProductList();
-  // }, []);
-
   return (
     <OrderDetailComponent
-      totalCost={totalCost}
       productList={productList}
       setProductList={setProductList}
       handleProductCost={handleProductCost}
