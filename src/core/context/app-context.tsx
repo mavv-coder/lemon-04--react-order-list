@@ -14,15 +14,15 @@ export const AppContextProvider: React.FC = (props) => {
     date: "",
   });
 
-  // Calculate total cost of the order using all cost properties
+  // Calculates total cost of the order using all cost properties
   const calculateOrderTotalCost = (list: ProductVm[]): number =>
     list.reduce((acc, product) => (acc += product.cost), 0);
 
-  // Set the totalCost State using the new list
+  // Sets the totalCost State using the new list
   const updateOrderTotalCost = (list: ProductVm[]): void =>
     setTotalCost(calculateOrderTotalCost(list));
 
-  // Load the product list from api and update total cost at the beginning
+  // Loads the product list from api and update total cost at the beginning
   const onLoadProductList = (): void => {
     getProductListApi()
       .then((data) => mapProductListFromApiToVm(data))
@@ -44,7 +44,7 @@ export const AppContextProvider: React.FC = (props) => {
         formData,
         setFormData,
         totalCost,
-        updateTotalCost: updateOrderTotalCost,
+        updateOrderTotalCost,
       }}
     >
       {props.children}

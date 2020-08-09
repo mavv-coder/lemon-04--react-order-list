@@ -18,5 +18,5 @@ export interface Context {
   formData: FormData;
   setFormData: (data: FormData) => void;
   totalCost: number;
-  updateTotalCost: (list: ProductVm[]) => void;
+  updateOrderTotalCost: (list: ProductVm[]) => void;
 }
