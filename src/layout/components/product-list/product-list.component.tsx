@@ -4,7 +4,6 @@ import { ProductVm } from "../../../core/context";
 
 interface Props {
   productList: ProductVm[];
-  setProductList: (product: ProductVm[]) => void;
   handleProductCost: (id: string, value: number) => void;
   toggleCheckboxValue: (product: ProductVm) => void;
   handleProductState: (action: boolean) => void;
@@ -17,6 +16,7 @@ export const ProductListComponent: React.FC<Props> = (props) => {
     toggleCheckboxValue,
     handleProductState,
   } = props;
+
   const {
     Table,
     TableData,
@@ -26,11 +26,6 @@ export const ProductListComponent: React.FC<Props> = (props) => {
     Container,
     Button,
   } = classComponents;
-
-  React.useEffect(() => {
-    // Pinta el estado al cargar el componente
-    handleProductState(true);
-  }, []);
 
   return (
     <>

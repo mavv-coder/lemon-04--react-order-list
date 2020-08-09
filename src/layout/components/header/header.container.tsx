@@ -6,14 +6,13 @@ import { HeaderComponent } from "./header.component";
 
 interface Props {
   orderState: number;
-  productList: ProductVm[];
   handleProductState: (action: boolean) => void;
 }
 
 export const HeaderContainer: React.FC<Props> = (props) => {
   const history = useHistory();
-  const { totalCost, formData, setFormData } = useAppContext();
-  const { orderState, productList, handleProductState } = props;
+  const { totalCost, formData, setFormData, productList } = useAppContext();
+  const { orderState, handleProductState } = props;
   const [stateSuccess, setStateSuccess] = React.useState<boolean>(false);
   const [orderNumSuccess, setOrderNumSuccess] = React.useState<boolean>(false);
   const [providerSuccess, setProviderSuccess] = React.useState<boolean>(false);

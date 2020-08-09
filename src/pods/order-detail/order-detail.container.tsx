@@ -58,7 +58,6 @@ export const OrderDetailContainer: React.FC = () => {
 
   return (
     <OrderDetailComponent
-      productList={productList}
       setProductList={setProductList}
       handleProductCost={handleProductCost}
       toggleCheckboxValue={toggleCheckboxValue}

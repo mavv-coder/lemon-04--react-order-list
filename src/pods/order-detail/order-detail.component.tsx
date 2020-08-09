@@ -2,10 +2,9 @@ import React from "react";
 import { ProductVm } from "../../core/context";
 import { HeadingContainer } from "../../layout/components/heading";
 import { HeaderContainer } from "../../layout/components/header";
-import { ProductListComponent } from "../../layout/components/product-list";
+import { ProductListContainer } from "../../layout/components/product-list";
 
 interface Props {
-  productList: ProductVm[];
   setProductList: (product: ProductVm[]) => void;
   handleProductCost: (id: string, value: number) => void;
   toggleCheckboxValue: (product: ProductVm) => void;
@@ -15,10 +14,8 @@ interface Props {
 
 export const OrderDetailComponent: React.FC<Props> = (props) => {
   const {
-    productList,
     setProductList,
     handleProductCost,
-
     toggleCheckboxValue,
     handleProductState,
     orderState,
@@ -28,11 +25,9 @@ export const OrderDetailComponent: React.FC<Props> = (props) => {
       <HeadingContainer title="Pedido a proveedor" />
       <HeaderContainer
         orderState={orderState}
-        productList={productList}
         handleProductState={handleProductState}
       />
-      <ProductListComponent
-        productList={productList}
+      <ProductListContainer
         setProductList={setProductList}
         handleProductCost={handleProductCost}
         toggleCheckboxValue={toggleCheckboxValue}
