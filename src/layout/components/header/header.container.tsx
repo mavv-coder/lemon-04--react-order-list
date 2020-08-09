@@ -76,7 +76,6 @@ export const HeaderContainer: React.FC<Props> = (props) => {
       handleSubmit={handleSubmit}
       totalCost={totalCost}
       orderState={orderState}
-      productList={productList}
       stateSuccess={stateSuccess}
       orderNumSuccess={orderNumSuccess}
       providerSuccess={providerSuccess}

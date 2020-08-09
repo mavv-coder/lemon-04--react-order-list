@@ -1,17 +1,16 @@
 import React from "react";
 import classComponents from "./header.styles";
-import { ProductVm, FormData } from "../../../core/context";
+import { FormData } from "../../../core/context";
 
 interface Props {
   formData: FormData;
   totalCost: number;
   orderState: number;
-  productList: ProductVm[];
-  handleSubmit: (e: any) => void;
   stateSuccess: boolean;
   orderNumSuccess: boolean;
   providerSuccess: boolean;
   dateSuccess: boolean;
+  handleSubmit: (e: any) => void;
   handleNumberInputStyle: (value: string, type: string) => void;
   handleProviderInputStyle: (value: string, type: string) => void;
   handleDateInputStyle: (value: string, type: string) => void;
