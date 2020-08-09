@@ -1,5 +1,5 @@
-import { ProductVm } from "./app-context.model";
 import { ProductEntityApi } from "../../api";
+import { ProductVm } from "./app-context.model";
 
 const mapProductFromApiToVm = (product: ProductEntityApi): ProductVm => ({
   id: product.id,
