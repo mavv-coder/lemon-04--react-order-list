@@ -1,8 +1,7 @@
 import React, { MouseEvent } from "react";
-import { useHistory } from "react-router-dom";
-import { switchRoutes } from "../../../core/router";
 import classComponents from "./header.styles";
 import { ProductVm } from "../../../core/context";
+
 import { useAppContext } from "../../../core/context";
 
 interface Props {
@@ -10,12 +9,21 @@ interface Props {
   orderState: number;
   productList: ProductVm[];
   handleProductState: (action: boolean) => void;
+  handleSubmit: (e: any) => void;
+  isReadyOrderStateToSubmit: () => boolean;
 }
 
 export const HeaderComponent: React.FC<Props> = (props) => {
   const { formData, setFormData } = useAppContext();
-  const history = useHistory();
-  const { totalCost, orderState, productList, handleProductState } = props;
+  // const history = useHistory();
+  const {
+    totalCost,
+    orderState,
+    productList,
+    handleProductState,
+    handleSubmit,
+    isReadyOrderStateToSubmit,
+  } = props;
 
   // const [formData, setFormData] = React.useState<FormData>({
   //   orderNum: "",
@@ -50,22 +58,23 @@ export const HeaderComponent: React.FC<Props> = (props) => {
     setFormData(newFormData);
   };
 
-  const isReadyFormDataToSubmit = (): boolean =>
-    formData.orderNum && formData.provider && formData.date ? true : false;
+  //
+  // const isReadyFormDataToSubmit = (): boolean =>
+  //   formData.orderNum && formData.provider && formData.date ? true : false;
 
-  const isReadyOrderStateToSubmit = (): boolean =>
-    productList.every((x) => x.state);
+  // const isReadyOrderStateToSubmit = (): boolean =>
+  //   productList.every((x) => x.state);
 
-  const navigateToCheckout = (): void => {
-    history.push(switchRoutes.checkout);
-  };
+  // const navigateToCheckout = (): void => {
+  //   history.push(switchRoutes.checkout);
+  // };
 
-  const handleSubmit = (e: MouseEvent): void => {
-    e.preventDefault();
-    isReadyOrderStateToSubmit() && isReadyFormDataToSubmit()
-      ? navigateToCheckout()
-      : console.log("Datos incorrectos");
-  };
+  // const handleSubmit = (e: MouseEvent): void => {
+  //   e.preventDefault();
+  //   isReadyOrderStateToSubmit() && isReadyFormDataToSubmit()
+  //     ? navigateToCheckout()
+  //     : alert("Completa el formulario y valida los productos");
+  // };
 
   const refreshAllInputStyleOnLoad = () => {
     formData.orderNum ? setOrderNumSuccess(true) : setOrderNumSuccess(false);
