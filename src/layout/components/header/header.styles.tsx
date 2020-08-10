@@ -1,4 +1,50 @@
 import styled from "@emotion/styled";
+import { css } from "emotion";
+
+export const classes = {
+  input: css`
+    height: 16px;
+    margin-top: 10px;
+    padding: 10px 12px;
+    font-family: inherit;
+    background-color: #fdfefe;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: all 0.2s;
+    &:focus {
+      border: 2px solid #fddc5c;
+    }
+  `,
+  inputSuccess: css`
+    height: 16px;
+    margin-top: 10px;
+    padding: 10px 12px;
+    font-family: inherit;
+    background-color: #fdfefe;
+    border-radius: 5px;
+    border: 2px solid #20c073;
+    outline: none;
+    transition: all 0.2s;
+    &:focus {
+      border: 2px solid #fddc5c;
+    }
+  `,
+  inputError: css`
+    height: 16px;
+    margin-top: 10px;
+    padding: 10px 12px;
+    font-family: inherit;
+    background-color: #fdfefe;
+    border-radius: 5px;
+    border: 2px solid red;
+    outline: none;
+    transition: all 0.2s;
+    &:focus {
+      border: 2px solid #fddc5c;
+    }
+  `,
+};
 
 const classComponents = {
   Container: styled("div")`

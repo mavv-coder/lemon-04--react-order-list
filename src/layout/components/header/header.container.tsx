@@ -14,9 +14,6 @@ export const HeaderContainer: React.FC<Props> = (props) => {
   const { totalCost, formData, setFormData, productList } = useAppContext();
   const { orderState, handleProductState } = props;
   const [stateSuccess, setStateSuccess] = React.useState<boolean>(false);
-  const [orderNumSuccess, setOrderNumSuccess] = React.useState<boolean>(false);
-  const [providerSuccess, setProviderSuccess] = React.useState<boolean>(false);
-  const [dateSuccess, setDateSuccess] = React.useState<boolean>(false);
 
   // Checks if input fields have any value
   const isReadyFormDataToSubmit = (): boolean =>
@@ -46,49 +43,18 @@ export const HeaderContainer: React.FC<Props> = (props) => {
     setFormData(newFormData);
   };
 
-  // Checks the input styles when navigate from other pages
-  const refreshAllInputStyleOnLoad = (): void => {
-    formData.orderNum ? setOrderNumSuccess(true) : setOrderNumSuccess(false);
-    formData.provider ? setProviderSuccess(true) : setProviderSuccess(false);
-    formData.date ? setDateSuccess(true) : setDateSuccess(false);
-  };
-
-  // Update Input OrderNum style to success if the value is correct
-  const handleNumberInputStyle = (value: string, type: string): void => {
-    handleFormData(value, type);
-    value ? setOrderNumSuccess(true) : setOrderNumSuccess(false);
-  };
-
-  // Update Input Provider style to success if the value is correct
-  const handleProviderInputStyle = (value: string, type: string): void => {
-    handleFormData(value, type);
-    value ? setProviderSuccess(true) : setProviderSuccess(false);
-  };
-
-  // Update Input Date style to success if the value is correct
-  const handleDateInputStyle = (value: string, type: string): void => {
-    handleFormData(value, type);
-    value ? setDateSuccess(true) : setDateSuccess(false);
-  };
-
   React.useEffect(() => {
     setStateSuccess(isReadyOrderStateToSubmit());
-    refreshAllInputStyleOnLoad();
   }, [handleProductState]);
 
   return (
     <HeaderComponent
+      handleFormData={handleFormData}
       handleSubmit={handleSubmit}
       totalCost={totalCost}
+      formData={formData}
       orderState={orderState}
       stateSuccess={stateSuccess}
-      orderNumSuccess={orderNumSuccess}
-      providerSuccess={providerSuccess}
-      dateSuccess={dateSuccess}
-      formData={formData}
-      handleProviderInputStyle={handleProviderInputStyle}
-      handleNumberInputStyle={handleNumberInputStyle}
-      handleDateInputStyle={handleDateInputStyle}
     />
   );
 };

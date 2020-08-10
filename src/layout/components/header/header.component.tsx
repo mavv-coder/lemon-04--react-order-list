@@ -1,5 +1,5 @@
 import React from "react";
-import classComponents from "./header.styles";
+import classComponents, { classes } from "./header.styles";
 import { FormData } from "../../../core/context";
 
 interface Props {
@@ -7,28 +7,18 @@ interface Props {
   totalCost: number;
   orderState: number;
   stateSuccess: boolean;
-  orderNumSuccess: boolean;
-  providerSuccess: boolean;
-  dateSuccess: boolean;
+  handleFormData: (value: string, type: string) => void;
   handleSubmit: (e: React.MouseEvent<HTMLElement>) => void;
-  handleNumberInputStyle: (value: string, type: string) => void;
-  handleProviderInputStyle: (value: string, type: string) => void;
-  handleDateInputStyle: (value: string, type: string) => void;
 }
 
 export const HeaderComponent: React.FC<Props> = (props) => {
   const {
-    totalCost,
     formData,
+    totalCost,
     orderState,
     handleSubmit,
+    handleFormData,
     stateSuccess,
-    orderNumSuccess,
-    providerSuccess,
-    dateSuccess,
-    handleNumberInputStyle,
-    handleProviderInputStyle,
-    handleDateInputStyle,
   } = props;
 
   const {
@@ -36,10 +26,8 @@ export const HeaderComponent: React.FC<Props> = (props) => {
     FlexContainer,
     InputField,
     InputReadOnly,
-    Input,
     Label,
     Button,
-    InputSuccess,
     InputStateSuccess,
   } = classComponents;
 
@@ -49,66 +37,49 @@ export const HeaderComponent: React.FC<Props> = (props) => {
         <FlexContainer>
           <InputField>
             <Label>Número</Label>
-            {orderNumSuccess ? (
-              <InputSuccess
-                type="text"
-                id="orderNum"
-                defaultValue={formData.orderNum}
-                onBlur={(e) =>
-                  handleNumberInputStyle(e.target.value, e.target.id)
-                }
-              />
-            ) : (
-              <Input
-                type="text"
-                id="orderNum"
-                onBlur={(e) =>
-                  handleNumberInputStyle(e.target.value, e.target.id)
-                }
-              />
-            )}
+            <input
+              type="text"
+              id="orderNum"
+              className={classes.input}
+              defaultValue={formData.orderNum}
+              onBlur={(e) => {
+                handleFormData(e.target.value, e.target.id);
+                e.target.className = e.target.value
+                  ? classes.inputSuccess
+                  : classes.inputError;
+                console.log(e.target.value);
+              }}
+            />
           </InputField>
           <InputField>
             <Label>Proveedor</Label>
-            {providerSuccess ? (
-              <InputSuccess
-                type="text"
-                id="provider"
-                defaultValue={formData.provider}
-                onBlur={(e) =>
-                  handleProviderInputStyle(e.target.value, e.target.id)
-                }
-              />
-            ) : (
-              <Input
-                type="text"
-                id="provider"
-                onBlur={(e) =>
-                  handleProviderInputStyle(e.target.value, e.target.id)
-                }
-              />
-            )}
+            <input
+              type="text"
+              id="provider"
+              className={classes.input}
+              defaultValue={formData.provider}
+              onBlur={(e) => {
+                handleFormData(e.target.value, e.target.id);
+                e.target.className = e.target.value
+                  ? classes.inputSuccess
+                  : classes.inputError;
+              }}
+            />
           </InputField>
           <InputField>
             <Label>Fecha</Label>
-            {dateSuccess ? (
-              <InputSuccess
-                type="date"
-                id="date"
-                defaultValue={formData.date}
-                onBlur={(e) =>
-                  handleDateInputStyle(e.target.value, e.target.id)
-                }
-              />
-            ) : (
-              <Input
-                type="date"
-                id="date"
-                onBlur={(e) =>
-                  handleDateInputStyle(e.target.value, e.target.id)
-                }
-              />
-            )}
+            <input
+              type="date"
+              id="date"
+              className={classes.input}
+              defaultValue={formData.date}
+              onBlur={(e) => {
+                handleFormData(e.target.value, e.target.id);
+                e.target.className = e.target.value
+                  ? classes.inputSuccess
+                  : classes.inputError;
+              }}
+            />
           </InputField>
         </FlexContainer>
         <FlexContainer>
