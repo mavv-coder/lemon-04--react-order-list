@@ -84,20 +84,6 @@ const classComponents = {
     font-size: 17px;
     color: #404040;
   `,
-  Input: styled("input")`
-    height: 16px;
-    margin-top: 10px;
-    padding: 10px 12px;
-    font-family: inherit;
-    background-color: #fdfefe;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    outline: none;
-    transition: all 0.2s;
-    &:focus {
-      border: 2px solid #fddc5c;
-    }
-  `,
   InputReadOnly: styled("input")`
     width: 86px;
     height: 16px;
@@ -110,20 +96,6 @@ const classComponents = {
     border-radius: 5px;
     outline: none;
     transition: all 0.2s;
-  `,
-  InputSuccess: styled("input")`
-    height: 16px;
-    margin-top: 10px;
-    padding: 10px 12px;
-    font-family: inherit;
-    background-color: #fdfefe;
-    border-radius: 5px;
-    border: 2px solid #20c073;
-    outline: none;
-    transition: all 0.2s;
-    &:focus {
-      border: 2px solid #fddc5c;
-    }
   `,
   InputStateSuccess: styled("input")`
     width: 86px;

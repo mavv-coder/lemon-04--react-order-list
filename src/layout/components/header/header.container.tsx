@@ -38,7 +38,7 @@ export const HeaderContainer: React.FC<Props> = (props) => {
 
   // Updates form properties with values from inputs
   // Then set FormData with new values
-  const handleFormData = (value: string, type: string): void => {
+  const handleOnBlur = (value: string, type: string): void => {
     const newFormData = { ...formData, [type]: value };
     setFormData(newFormData);
   };
@@ -49,7 +49,7 @@ export const HeaderContainer: React.FC<Props> = (props) => {
 
   return (
     <HeaderComponent
-      handleFormData={handleFormData}
+      handleOnBlur={handleOnBlur}
       handleSubmit={handleSubmit}
       totalCost={totalCost}
       formData={formData}

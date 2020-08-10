@@ -7,7 +7,7 @@ interface Props {
   totalCost: number;
   orderState: number;
   stateSuccess: boolean;
-  handleFormData: (value: string, type: string) => void;
+  handleOnBlur: (value: string, type: string) => void;
   handleSubmit: (e: React.MouseEvent<HTMLElement>) => void;
 }
 
@@ -16,9 +16,9 @@ export const HeaderComponent: React.FC<Props> = (props) => {
     formData,
     totalCost,
     orderState,
-    handleSubmit,
-    handleFormData,
     stateSuccess,
+    handleSubmit,
+    handleOnBlur,
   } = props;
 
   const {
@@ -43,11 +43,10 @@ export const HeaderComponent: React.FC<Props> = (props) => {
               className={classes.input}
               defaultValue={formData.orderNum}
               onBlur={(e) => {
-                handleFormData(e.target.value, e.target.id);
+                handleOnBlur(e.target.value, e.target.id);
                 e.target.className = e.target.value
                   ? classes.inputSuccess
                   : classes.inputError;
-                console.log(e.target.value);
               }}
             />
           </InputField>
@@ -59,7 +58,7 @@ export const HeaderComponent: React.FC<Props> = (props) => {
               className={classes.input}
               defaultValue={formData.provider}
               onBlur={(e) => {
-                handleFormData(e.target.value, e.target.id);
+                handleOnBlur(e.target.value, e.target.id);
                 e.target.className = e.target.value
                   ? classes.inputSuccess
                   : classes.inputError;
@@ -74,7 +73,7 @@ export const HeaderComponent: React.FC<Props> = (props) => {
               className={classes.input}
               defaultValue={formData.date}
               onBlur={(e) => {
-                handleFormData(e.target.value, e.target.id);
+                handleOnBlur(e.target.value, e.target.id);
                 e.target.className = e.target.value
                   ? classes.inputSuccess
                   : classes.inputError;
