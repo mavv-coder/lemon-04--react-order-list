@@ -33,7 +33,7 @@ export const OrderDetailContainer: React.FC = () => {
   // Changes state property depend on checked property value
   // Then sets the ProductList State with the updated product
   // Then calculates the OrderState with the updated product
-  const handleProductState = (action: boolean): void => {
+  const handleProductValidate = (action: boolean): void => {
     let newList = [];
     action
       ? (newList = productList.map((x) =>
@@ -65,7 +65,7 @@ export const OrderDetailContainer: React.FC = () => {
     <OrderDetailComponent
       handleProductCost={handleProductCost}
       toggleCheckboxValue={toggleCheckboxValue}
-      handleProductState={handleProductState}
+      handleProductValidate={handleProductValidate}
       orderState={orderState}
     />
   );

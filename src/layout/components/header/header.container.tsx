@@ -6,13 +6,13 @@ import { HeaderComponent } from "./header.component";
 
 interface Props {
   orderState: number;
-  handleProductState: (action: boolean) => void;
+  handleProductValidate: (action: boolean) => void;
 }
 
 export const HeaderContainer: React.FC<Props> = (props) => {
   const history = useHistory();
   const { totalCost, formData, setFormData, productList } = useAppContext();
-  const { orderState, handleProductState } = props;
+  const { orderState, handleProductValidate } = props;
   const [stateSuccess, setStateSuccess] = React.useState<boolean>(false);
 
   // Checks if input fields have any value
@@ -45,7 +45,7 @@ export const HeaderContainer: React.FC<Props> = (props) => {
 
   React.useEffect(() => {
     setStateSuccess(isReadyOrderStateToSubmit());
-  }, [handleProductState]);
+  }, [handleProductValidate]);
 
   return (
     <HeaderComponent
